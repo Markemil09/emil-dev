@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Experience | THE_ARCHITECT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#111316",
+                        "surface": "#111316",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#00677f",
+                        "secondary-fixed": "#cfe6f2",
+                        "on-tertiary-fixed": "#291800",
+                        "on-tertiary": "#442b00",
+                        "on-surface-variant": "#bbc9cf",
+                        "on-background": "#e2e2e6",
+                        "secondary": "#b4cad6",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#b6ebff",
+                        "on-primary-fixed": "#001f28",
+                        "on-secondary-container": "#a6bcc7",
+                        "surface-variant": "#333538",
+                        "surface-bright": "#37393d",
+                        "on-secondary-fixed": "#071e27",
+                        "surface-container-highest": "#333538",
+                        "on-primary-fixed-variant": "#004e60",
+                        "surface-container-low": "#1a1c1f",
+                        "inverse-surface": "#e2e2e6",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "primary-container": "#00d2ff",
+                        "tertiary-container": "#ffb229",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#1e333c",
+                        "outline": "#859399",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container": "#1e2023",
+                        "on-primary-container": "#00566a",
+                        "surface-tint": "#47d6ff",
+                        "surface-container-high": "#282a2d",
+                        "secondary-container": "#374c56",
+                        "primary-fixed-dim": "#47d6ff",
+                        "on-error": "#690005",
+                        "primary": "#a5e7ff",
+                        "outline-variant": "#3c494e",
+                        "surface-container-lowest": "#0c0e11",
+                        "tertiary-fixed": "#ffddb1",
+                        "background": "#111316",
+                        "on-tertiary-container": "#6c4700",
+                        "tertiary-fixed-dim": "#ffba4a",
+                        "on-primary": "#003543",
+                        "tertiary": "#ffd79f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-border-lines { border: none !important; }
+        .tonal-shift-via-blur { backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-md shadow-2xl shadow-cyan-900/10 no-border-lines tonal-shift-via-blur">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-xl font-black text-white tracking-widest uppercase">THE_ARCHITECT</div>
+<div class="hidden md:flex items-center space-x-10 font-inter tracking-tighter uppercase text-sm font-bold">
+<a class="text-slate-500 hover:text-slate-200 transition-colors hover:text-cyan-300 transition-all duration-300" href="#">Projects</a>
+<a class="text-cyan-400 border-b border-cyan-400/50 pb-1 hover:text-cyan-300 transition-all duration-300" href="#">Experience</a>
+<a class="text-slate-500 hover:text-slate-200 transition-colors hover:text-cyan-300 transition-all duration-300" href="#">Stack</a>
+<a class="text-slate-500 hover:text-slate-200 transition-colors hover:text-cyan-300 transition-all duration-300" href="#">Contact</a>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest scale-95 active:opacity-80 transition-all hover:brightness-110" href="#">
+                Resume.pdf
+            </a>
+</div>
+</nav>
+<main class="pt-40 pb-32 max-w-7xl mx-auto px-8">
+<!-- Hero Section -->
+<header class="mb-32 max-w-3xl">
+<div class="font-label text-primary uppercase tracking-[0.3em] text-xs mb-6">Professional Dossier</div>
+<h1 class="text-7xl md:text-8xl font-black tracking-tighter leading-none mb-8 text-white">
+                Engineered <br/>
+<span class="text-primary-container">Progression.</span>
+</h1>
+<p class="text-on-surface-variant text-xl leading-relaxed font-light">
+                Over a decade of constructing scalable digital infrastructures and leading high-performance engineering teams. A narrative of technical precision and architectural leadership.
+            </p>
+</header>
+<!-- Experience Timeline -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
+<!-- Left Margin Annotation (Desktop Only) -->
+<aside class="hidden md:block md:col-span-3">
+<div class="sticky top-40 space-y-8">
+<div class="border-l-2 border-primary/20 pl-6 py-2">
+<div class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Current Status</div>
+<div class="text-primary font-bold text-sm tracking-tight uppercase">Available for Strategic Roles</div>
+</div>
+<div class="border-l-2 border-outline-variant/20 pl-6 py-2">
+<div class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Core Competencies</div>
+<div class="text-on-surface font-medium text-sm">Distributed Systems, Cloud Architecture, Team Mentorship</div>
+</div>
+</div>
+</aside>
+<!-- Main Timeline -->
+<div class="md:col-span-9 relative">
+<!-- Vertical Circuit Line -->
+<div class="absolute left-0 md:left-0 top-0 bottom-0 w-[1px] bg-outline-variant opacity-20 ml-[7px]"></div>
+<!-- Experience Item 1 -->
+<div class="relative pl-12 mb-24">
+<!-- Timeline Node -->
+<div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary ring-8 ring-primary/10 shadow-[0_0_15px_rgba(165,231,255,0.4)]"></div>
+<div class="bg-surface-container-low p-10 rounded-xl transition-all duration-500 hover:bg-surface-container hover:shadow-[0_0_40px_rgba(0,210,255,0.05)] group">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<div class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">2021 — PRESENT</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight">Principal Software Architect</h2>
+<div class="text-primary font-bold tracking-widest text-sm uppercase mt-1">Quantum Systems Inc.</div>
+</div>
+<div class="flex gap-2 h-fit">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">Kubernetes</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">Golang</span>
+</div>
+</div>
+<ul class="space-y-4 text-on-surface-variant leading-relaxed text-lg">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="terminal">terminal</span>
+<span>Spearheaded the migration of monolithic legacy infrastructure to a global microservices mesh, reducing operational overhead by 40%.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="groups">groups</span>
+<span>Directly led a cross-functional team of 15 engineers across 3 time zones, implementing elite CI/CD standards and peer-review protocols.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="bolt">bolt</span>
+<span>Architected a high-throughput data ingestion pipeline handling 2B+ events daily with 99.99% uptime.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Experience Item 2 -->
+<div class="relative pl-12 mb-24">
+<!-- Timeline Node -->
+<div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-outline-variant/40 group-hover:bg-primary transition-colors"></div>
+<div class="bg-surface-container-low p-10 rounded-xl transition-all duration-500 hover:bg-surface-container">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<div class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">2018 — 2021</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight">Senior Engineering Lead</h2>
+<div class="text-primary font-bold tracking-widest text-sm uppercase mt-1">Vertex FinTech</div>
+</div>
+<div class="flex gap-2 h-fit">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">React</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">Node.js</span>
+</div>
+</div>
+<ul class="space-y-4 text-on-surface-variant leading-relaxed">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="trending_up">trending_up</span>
+<span>Optimized application performance core-vitals by 40%, leading to a 12% increase in user retention for the primary mobile platform.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="security">security</span>
+<span>Implemented SOC2 compliant security frameworks and automated threat detection systems across the cloud perimeter.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="school">school</span>
+<span>Mentored 5 junior developers through a customized 6-month growth track, resulting in 100% promotion rate within the year.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Experience Item 3 -->
+<div class="relative pl-12">
+<!-- Timeline Node -->
+<div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-outline-variant/40 group-hover:bg-primary transition-colors"></div>
+<div class="bg-surface-container-low p-10 rounded-xl transition-all duration-500 hover:bg-surface-container">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<div class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">2015 — 2018</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight">Full Stack Developer</h2>
+<div class="text-primary font-bold tracking-widest text-sm uppercase mt-1">Nexus Web Labs</div>
+</div>
+<div class="flex gap-2 h-fit">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">Python</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-label font-bold uppercase tracking-wider">AWS</span>
+</div>
+</div>
+<ul class="space-y-4 text-on-surface-variant leading-relaxed">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="layers">layers</span>
+<span>Developed and maintained 50+ RESTful API endpoints catering to diverse client requirements in the e-commerce sector.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1.5" data-icon="monitoring">monitoring</span>
+<span>Reduced database query latency by 65% through strategic indexing and query optimization on PostgreSQL clusters.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Block -->
+<section class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary">
+<div class="text-4xl font-black text-white mb-2">10+</div>
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">Years Professional Exp</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary">
+<div class="text-4xl font-black text-white mb-2">150+</div>
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">Production Shipments</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl border-l-4 border-primary">
+<div class="text-4xl font-black text-white mb-2">20+</div>
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">Open Source Contribs</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#111316] tonal-shift-from-surface-low">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-slate-800/30 gap-6">
+<div class="text-slate-200 font-bold tracking-widest text-xs uppercase">THE_ARCHITECT / DOSSIER</div>
+<div class="flex gap-8 font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-slate-500">
+<a class="hover:text-white transition-colors opacity-70 hover:opacity-100" href="#">GITHUB</a>
+<a class="hover:text-white transition-colors opacity-70 hover:opacity-100" href="#">LINKEDIN</a>
+<a class="hover:text-white transition-colors opacity-70 hover:opacity-100" href="#">READCV</a>
+</div>
+<div class="font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-slate-500">
+                © 2024 ENGINEERED_PRECISION. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>

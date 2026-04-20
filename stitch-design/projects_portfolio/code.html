@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#111316",
+                        "surface": "#111316",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#00677f",
+                        "secondary-fixed": "#cfe6f2",
+                        "on-tertiary-fixed": "#291800",
+                        "on-tertiary": "#442b00",
+                        "on-surface-variant": "#bbc9cf",
+                        "on-background": "#e2e2e6",
+                        "secondary": "#b4cad6",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#b6ebff",
+                        "on-primary-fixed": "#001f28",
+                        "on-secondary-container": "#a6bcc7",
+                        "surface-variant": "#333538",
+                        "surface-bright": "#37393d",
+                        "on-secondary-fixed": "#071e27",
+                        "surface-container-highest": "#333538",
+                        "on-primary-fixed-variant": "#004e60",
+                        "surface-container-low": "#1a1c1f",
+                        "inverse-surface": "#e2e2e6",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "primary-container": "#00d2ff",
+                        "tertiary-container": "#ffb229",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#1e333c",
+                        "outline": "#859399",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container": "#1e2023",
+                        "on-primary-container": "#00566a",
+                        "surface-tint": "#47d6ff",
+                        "surface-container-high": "#282a2d",
+                        "secondary-container": "#374c56",
+                        "primary-fixed-dim": "#47d6ff",
+                        "on-error": "#690005",
+                        "primary": "#a5e7ff",
+                        "outline-variant": "#3c494e",
+                        "surface-container-lowest": "#0c0e11",
+                        "tertiary-fixed": "#ffddb1",
+                        "background": "#111316",
+                        "on-tertiary-container": "#6c4700",
+                        "tertiary-fixed-dim": "#ffba4a",
+                        "on-primary": "#003543",
+                        "tertiary": "#ffd79f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #111316;
+            color: #e2e2e6;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .technical-gradient {
+            background: linear-gradient(135deg, #a5e7ff 0%, #00d2ff 100%);
+        }
+        .circuit-line {
+            background: rgba(60, 73, 78, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-md shadow-2xl shadow-cyan-900/10">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-xl font-black text-white tracking-widest uppercase">THE_ARCHITECT</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-inter tracking-tighter uppercase text-sm font-bold text-cyan-400 border-b border-cyan-400/50 pb-1" href="#">Projects</a>
+<a class="font-inter tracking-tighter uppercase text-sm font-bold text-slate-500 hover:text-slate-200 transition-colors" href="#">Experience</a>
+<a class="font-inter tracking-tighter uppercase text-sm font-bold text-slate-500 hover:text-slate-200 transition-colors" href="#">Stack</a>
+<a class="font-inter tracking-tighter uppercase text-sm font-bold text-slate-500 hover:text-slate-200 transition-colors" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label text-xs font-bold tracking-widest uppercase scale-95 active:opacity-80 transition-all duration-300 technical-gradient">
+                    Resume.pdf
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<div class="font-label text-on-surface-variant text-xs tracking-[0.3em] uppercase mb-4">Case Studies / 2023-2024</div>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none">PROJECTS<span class="text-primary-container">.</span></h1>
+<p class="mt-8 text-on-surface-variant text-lg leading-relaxed max-w-xl">
+                    High-performance React ecosystems and cross-platform React Native solutions. Architecting scalable digital foundations with surgical precision.
+                </p>
+</div>
+<div class="flex flex-col gap-2 border-l-2 border-outline-variant/20 pl-6 h-fit">
+<span class="font-label text-primary text-xs font-bold tracking-widest">FILTER_BY_TYPE</span>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-surface-container-high px-4 py-1 rounded-full text-[10px] font-label font-bold text-white cursor-pointer hover:bg-primary-container hover:text-on-primary-container transition-colors">ALL</span>
+<span class="bg-surface-container-low px-4 py-1 rounded-full text-[10px] font-label font-bold text-on-surface-variant cursor-pointer hover:bg-primary-container hover:text-on-primary-container transition-colors">REACT_JS</span>
+<span class="bg-surface-container-low px-4 py-1 rounded-full text-[10px] font-label font-bold text-on-surface-variant cursor-pointer hover:bg-primary-container hover:text-on-primary-container transition-colors">REACT_NATIVE</span>
+</div>
+</div>
+</header>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Project Card 01 -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(0,210,255,0.15)]">
+<div class="aspect-video w-full overflow-hidden bg-surface-container-lowest">
+<img alt="Project Thumbnail" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" data-alt="Modern dark UI code editor dashboard with vibrant neon syntax highlighting and floating futuristic data visualization elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgUdbMgQ-ekpqrvi2epWz5lnqK44Vmah7tx_aiwso5D0lgDarwQ5nZZDbwCGpDqAP4rde3XIBqG6GU1e9b678okFuS_cDS2QjbMWPgn4vCs-WczCgsUdyDyGQSEHzGYx1KARSYLkjkhkeH749WsLDBhoJQjW4oKer4CmW8_PLY1PK2Livp1WiyRkwvJE-_Ut3GyOIspqTSp_EWNTOtU0phcndC0GSZ0nKsF7ZbsXDrX5bEZCikhMsteqC5HSa_mKzO7SpVjvvPX6fj"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label text-[10px] text-primary tracking-[0.2em] font-bold">ECOSYSTEM_CORE</span>
+<h3 class="text-2xl font-black text-white mt-1 tracking-tight">KINETIC_DASHBOARD_V2</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                        Architected a high-throughput monitoring dashboard for real-time telemetry processing. Implemented custom WebGL rendering for massive dataset visualization.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">REACT</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">TYPESCRIPT</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">REDUX_TOOLKIT</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">THREE_JS</span>
+</div>
+</div>
+</div>
+<!-- Project Card 02 -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(0,210,255,0.15)] md:mt-24">
+<div class="aspect-video w-full overflow-hidden bg-surface-container-lowest">
+<img alt="Mobile Project" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" data-alt="Sleek smartphone display showing a minimalist mobile banking app with clean typography and deep blue aesthetic on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbSwv2dIR-37dR5FiaLsDLNkso9hzF_EMCIDOQhNKsjFf4zBUBefrqkZCQbdl0CDMN_OCEvbqSQtyE3GkzXJSx50CK8DstRFvqTB5EDAeAnmulCLHytk703XfDy3y4-kg6aHyiFrifuMtiknzicWXIBtFKSSo4IYDo19ejm41TrlJQak2yf7eGkAANXlxrxbzki-l5qzYaVrw8U9ma9n7ZU8j2AmOEJw2VFib16CQAIonVz2XU4J76TIEhcqZwGkXgRDiHx8vGEDfT"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label text-[10px] text-primary tracking-[0.2em] font-bold">CROSS_PLATFORM</span>
+<h3 class="text-2xl font-black text-white mt-1 tracking-tight">OMNI_FINANCE_MOBILE</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                        Developed a cross-platform fintech solution using React Native. Focused on biometric security integration and localized state synchronization for offline support.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">REACT_NATIVE</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">REANIMATED_V3</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">ZUSTAND</span>
+</div>
+</div>
+</div>
+<!-- Project Card 03 -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(0,210,255,0.15)]">
+<div class="aspect-video w-full overflow-hidden bg-surface-container-lowest">
+<img alt="Analytics Dashboard" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" data-alt="Abstract data streams flowing through a dark space with cyan and magenta light trails, representing network architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH3abj8a2jGLNp-urr64UThObPQx38VbIo8lwXhZgjSKrvbRGIS4Yv7XuZRw9JR9-oGtPHGYwEcnBptR24WpKYWGTzGeaOwZkFDEoErRJjXcL6bfo5sEaCmOaujcrr1RbsP9OXqandystrshJ7c61mM5CF_TNmARG4F71QwgBl1MoDqmG_HI8iK6cN9IaAyJY0sR1osMBdbyK9EzC3FOBMz0z_vqNL0VbcEPL3boYcupv_OQomjj4zZL-rY2BOYTgUKYrPI75TUyHr"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label text-[10px] text-primary tracking-[0.2em] font-bold">INFRASTRUCTURE</span>
+<h3 class="text-2xl font-black text-white mt-1 tracking-tight">VOID_ANALYTICS_ENGINE</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                        A specialized data processing hub utilizing React Server Components. Designed for sub-100ms response times on complex analytical queries.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">NEXTJS_14</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">TRPC</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">PRISMA</span>
+</div>
+</div>
+</div>
+<!-- Project Card 04 -->
+<div class="group relative flex flex-col bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(0,210,255,0.15)] md:mt-24">
+<div class="aspect-video w-full overflow-hidden bg-surface-container-lowest">
+<img alt="Security Project" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" data-alt="Matrix-style digital rain with binary code scrolling down a dark screen with deep green and blue luminescence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9OhjghDqv82cBvgOGLA72U_i9HWDuO7j-hrU_UMM7EAhDEbs2z0o3gjsE-QufMHV6390-nt_RNUYyFOsg4xdQd14T-vOdapeqezHad1jIOdkFnmUClFQ1wUoVjZ0LpPrUw-sEI4OL679D89zWJNWCvdB6SfiNzxDKIV-IBxjmoPXJ75HhgEkv_Njo2dQrl92jBdDKqo0UDSdRWA8bCaNHw6ywjGpb8l7BRCHQMFPpupnO0r0rjf07rx1M0Jh6zxxUq6pLxWUP1peg"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-label text-[10px] text-primary tracking-[0.2em] font-bold">MOBILE_ENCRYPTION</span>
+<h3 class="text-2xl font-black text-white mt-1 tracking-tight">VAULT_COMMUNICATIONS</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                        End-to-end encrypted messaging application built with React Native and the Signal Protocol. Implemented complex SQLite encryption layers.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">REACT_NATIVE</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">CRYPTO_JS</span>
+<span class="bg-secondary-container text-on-secondary-container font-label text-[10px] px-3 py-1 rounded-md tracking-wider">SQLITE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Annotation Inset (Asymmetric Layout) -->
+<div class="mt-48 flex flex-col md:flex-row gap-20">
+<div class="md:w-1/3">
+<div class="circuit-line w-px h-24 mb-6"></div>
+<h4 class="font-label text-white text-xs font-bold tracking-[0.4em] uppercase mb-6">TECH_STACK_EXPOSURE</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center group">
+<span class="font-label text-on-surface-variant text-[10px] group-hover:text-primary transition-colors">REACT_ECOSYSTEM</span>
+<span class="text-primary font-bold text-xs">98%</span>
+</div>
+<div class="w-full h-px bg-outline-variant/10"></div>
+<div class="flex justify-between items-center group">
+<span class="font-label text-on-surface-variant text-[10px] group-hover:text-primary transition-colors">TYPESCRIPT_STRICT</span>
+<span class="text-primary font-bold text-xs">100%</span>
+</div>
+<div class="w-full h-px bg-outline-variant/10"></div>
+<div class="flex justify-between items-center group">
+<span class="font-label text-on-surface-variant text-[10px] group-hover:text-primary transition-colors">MOBILE_ARCHITECT</span>
+<span class="text-primary font-bold text-xs">85%</span>
+</div>
+<div class="w-full h-px bg-outline-variant/10"></div>
+<div class="flex justify-between items-center group">
+<span class="font-label text-on-surface-variant text-[10px] group-hover:text-primary transition-colors">NODE_BACKEND</span>
+<span class="text-primary font-bold text-xs">70%</span>
+</div>
+</div>
+</div>
+<div class="md:w-2/3 bg-surface-container-low p-12 rounded-xl">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">terminal</span>
+<p class="text-xl text-on-surface-variant font-medium leading-relaxed italic">
+                    "The difference between a coder and an architect is the ability to anticipate failure. Every project in this gallery was built with defensive patterns, modular scaling, and rigorous type safety as first-class citizens."
+                </p>
+<div class="mt-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary/20">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="Professional headshot of a software architect with a focused expression, wearing glasses, dark studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX5s2GB-p5Fn9NkMwEA9r7S-0BKDnxwpvTbWGSsvWdvSC6EYnvKnjADn5E4xJuquJz21vfk_b-Rr10Pk7GI57UpBIssa4DtgSgUSa8ohCLfmpTuRPaGySasBlgAW44agu8KHLvUrcZj1U7tly3V5gnx0RZqlsLC0geQoEYd7KXwgBZK3Fl3XS4bYW9n6vs7yCcHVSH3CtCotqBJwZf-oevTg2N3qX4iXVQyMLam4G6Db7CbFrOTiSYzWp6GXUQMOLr8bd8KstYIAe-"/>
+</div>
+<div>
+<div class="text-white font-bold text-sm">MARCUS_CHEN</div>
+<div class="font-label text-on-surface-variant text-[10px] tracking-widest">SR_SYSTEMS_ENGINEER</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#111316]">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-slate-800/30 gap-6">
+<div class="text-slate-200 font-bold text-sm tracking-widest uppercase">ENGINEERED_PRECISION</div>
+<div class="font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-slate-500">
+                © 2024 ENGINEERED_PRECISION. ALL RIGHTS RESERVED.
+            </div>
+<div class="flex gap-8">
+<a class="font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-slate-600 hover:text-white transition-colors" href="#">GITHUB</a>
+<a class="font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-slate-600 hover:text-white transition-colors" href="#">LINKEDIN</a>
+<a class="font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-slate-600 hover:text-white transition-colors" href="#">READCV</a>
+</div>
+</div>
+</footer>
+</body></html>

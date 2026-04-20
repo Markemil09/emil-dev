@@ -1,35 +1,59 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { portfolioColors } from '@/components/portfolio';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: portfolioColors.primaryStrong,
+        tabBarInactiveTintColor: portfolioColors.textDim,
         headerShown: false,
         tabBarButton: HapticTab,
+        tabBarStyle: {
+          display: 'none',
+        },
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '700',
+          letterSpacing: 0.4,
+        },
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <MaterialIcons size={24} name="home-filled" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="projects"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          href: null,
+          title: 'Projects',
+          tabBarIcon: ({ color }) => <MaterialIcons size={24} name="work-outline" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="experience"
+        options={{
+          href: null,
+          title: 'Experience',
+          tabBarIcon: ({ color }) => <MaterialIcons size={24} name="timeline" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="stack"
+        options={{
+          href: null,
+          title: 'Stack',
+          tabBarIcon: ({ color }) => <MaterialIcons size={24} name="terminal" color={color} />,
+        }}
+      />
+      <Tabs.Screen name="explore" options={{ href: null }} />
     </Tabs>
   );
 }

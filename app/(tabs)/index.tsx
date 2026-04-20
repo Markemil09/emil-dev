@@ -1,98 +1,1014 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import {
+  AnimatedPanel,
+  AnimatedProgress,
+  AnimatedReveal,
+  BrandHeader,
+  Chip,
+  FooterSignature,
+  Metric,
+  Panel,
+  PortfolioScreen,
+  PortfolioSection,
+  PrimaryButton,
+  RemoteImage,
+  SecondaryButton,
+  SectionTitle,
+  portfolioColors,
+  portfolioImages,
+  portfolioText,
+  scrollToPortfolioSection,
+  usePortfolioLayout,
+} from '@/components/portfolio';
+
+const projects = [
+  {
+    title: 'FRONTEND DEVELOPMENT',
+    label: 'REACT.JS',
+    description:
+      'Built dynamic and responsive web applications using React.js across multiple production roles.',
+    image: portfolioImages.projectA,
+    stack: ['REACT.JS', 'HTML', 'CSS', 'JAVASCRIPT'],
+  },
+  {
+    title: 'MOBILE APP DELIVERY',
+    label: 'CROSS_PLATFORM',
+    description:
+      'Delivered mobile apps with Flutter and React Native for both iOS and Android platforms.',
+    image: portfolioImages.projectB,
+    stack: ['FLUTTER', 'REACT_NATIVE', 'IOS', 'ANDROID'],
+  },
+  {
+    title: 'APP STORE RELEASES',
+    label: 'IOS_DEPLOYMENT',
+    description:
+      'Published iOS applications to the Apple App Store with full compliance to review guidelines.',
+    image: portfolioImages.projectC,
+    stack: ['XCODE', 'APP_STORE', 'TESTING'],
+  },
+  {
+    title: 'TEAM COLLABORATION',
+    label: 'AGILE_DELIVERY',
+    description:
+      'Worked closely with designers, backend developers, and junior engineers in agile teams.',
+    image: portfolioImages.projectD,
+    stack: ['AGILE', 'MENTORING', 'GIT'],
+  },
+];
+
+const timeline = [
+  {
+    years: '05/2025 — CURRENT',
+    role: 'Senior Software Engineer',
+    company: 'SVEN',
+    chips: ['REACT.JS', 'REACT_NATIVE'],
+    bullets: [
+      'Built responsive web applications with React.js for production use.',
+      'Developed mobile apps with Flutter and React Native for iOS and Android.',
+      'Handled App Store releases while maintaining platform compliance.',
+    ],
+  },
+  {
+    years: '03/2022 — 05/2025',
+    role: 'Senior Software Engineer',
+    company: 'TopApps Inc.',
+    chips: ['FLUTTER', 'XCODE'],
+    bullets: [
+      'Improved performance and reduced load times through efficient coding practices.',
+      'Worked in agile delivery cycles with backend developers and mentored junior engineers.',
+      'Used React.js, Flutter, React Native, Xcode, Android Studio, and Git in delivery work.',
+    ],
+  },
+  {
+    years: '10/2021 — 03/2022',
+    role: 'Software Engineer',
+    company: 'Hooli Software',
+    chips: ['UI', 'WIREFRAMES'],
+    bullets: [
+      'Turned design mockups and wireframes into interactive and user-friendly interfaces.',
+    ],
+  },
+  {
+    years: '02/2020 — 09/2021',
+    role: 'Software Developer',
+    company: 'The Nerds Solutions',
+    chips: ['REACT.JS', 'SPRING_BOOT'],
+    bullets: [
+      'Built websites with React JS in a fast-paced development environment.',
+      'Worked with designers, UI/UX specialists, and backend developers to ship features.',
+      'Contributed Java Spring Boot backend work and reusable UI components with Redux.',
+    ],
+  },
+];
+
+const frontendSkills = [
+  ['React.js', 'EXPERT', 0.95, 'data-object'],
+  ['React Native', 'EXPERT', 0.92, 'smartphone'],
+  ['Flutter', 'ADVANCED', 0.9, 'rocket-launch'],
+];
+
+const toolCards = [
+  ['Xcode', 'IOS_RELEASES', 'APP_STORE', 'SUBMISSIONS', 'phone-iphone'],
+  ['Git', 'VERSION_CONTROL', 'AGILE', 'TEAM_WORKFLOWS', 'account-tree'],
+  ['Jest', 'TESTING', 'UI_LOGIC', 'QUALITY_CHECKS', 'verified'],
+];
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const { isDesktop, isTablet, isMobile } = usePortfolioLayout();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  return (
+    <PortfolioScreen>
+      <PortfolioSection id="home">
+        <View style={[styles.heroRow, isDesktop ? styles.heroRowDesktop : null]}>
+          <AnimatedReveal style={styles.heroMain}>
+            <BrandHeader
+              eyebrow="Senior Software Engineer"
+              title="Mark Emil"
+              accent=" Sarmiento."
+              description="Frontend and mobile developer focused on React.js, React Native, Flutter, and practical product delivery for web and mobile teams."
+            />
+
+          <View
+            style={[
+              styles.heroActions,
+              isTablet ? styles.heroActionsWide : null,
+              isMobile ? styles.heroActionsMobile : null,
+            ]}>
+            <View style={styles.buttonWrap}>
+              <PrimaryButton
+                label="Contact Me"
+                onPress={() => scrollToPortfolioSection('contact')}
+              />
+            </View>
+            <View style={styles.buttonWrap}>
+              <SecondaryButton
+                label="View Experience"
+                onPress={() => scrollToPortfolioSection('experience')}
+              />
+            </View>
+          </View>
+          </AnimatedReveal>
+
+          <AnimatedPanel delay={140} style={[styles.metaCard, isDesktop ? styles.metaCardDesktop : null]}>
+            <View>
+              <Text style={styles.metaLabel}>01 / CORE PHILOSOPHY</Text>
+              <Text style={styles.metaCopy}>
+                I focus on quality performance, strategic execution, and helping teams work effectively.
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.metaLabel}>02 / CONTACT</Text>
+              <Text style={styles.metaCopy}>mark.emil.sarmiento@gmail.com | +63 998 564 0423</Text>
+            </View>
+          </AnimatedPanel>
+        </View>
+
+        <AnimatedPanel delay={220} style={styles.bioCard}>
+          <View style={[styles.bioInner, isDesktop ? styles.bioInnerDesktop : null]}>
+            <View style={styles.bioCopy}>
+              <Text style={[styles.bioTitle, isMobile ? styles.bioTitleMobile : null]}>
+                Building responsive web and mobile products with a practical engineering mindset.
+              </Text>
+              <Text style={portfolioText.body}>
+                As a dedicated professional, I am committed to enhancing team effectiveness through
+                strategic focus and quality performance. My approach is driven by empathy and a
+                genuine desire to empower others.
+              </Text>
+              <Text style={portfolioText.body}>
+                I believe in setting ambitious goals, pushing boundaries, and delivering
+                excellence in both professional and personal pursuits.
+              </Text>
+              <View style={[styles.capabilityRow, isMobile ? styles.capabilityRowMobile : null]}>
+                <View style={styles.capabilityBlock}>
+                  <Text style={styles.capabilityLabel}>SYSTEMS</Text>
+                  <Text style={styles.capabilityValue}>React.js and JavaScript Applications</Text>
+                </View>
+                <View style={styles.capabilityBlock}>
+                  <Text style={styles.capabilityLabel}>INTERFACE</Text>
+                  <Text style={styles.capabilityValue}>React Native and Flutter Mobile Apps</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </AnimatedPanel>
+      </PortfolioSection>
+
+      <PortfolioSection id="projects">
+        <View style={[styles.sectionHeaderRow, isDesktop ? styles.sectionHeaderRowDesktop : null]}>
+          <View style={styles.headerMain}>
+            <SectionTitle eyebrow="Highlights" title="Capabilities" />
+            <Text style={[portfolioText.body, styles.headerDescription]}>
+              Core work areas pulled from my recent experience across frontend, mobile, release, and collaboration.
+            </Text>
+          </View>
+          <AnimatedPanel delay={120} style={[styles.filterPanel, isDesktop ? styles.filterPanelDesktop : null]}>
+            <Text style={styles.filterLabel}>FOCUS_AREAS</Text>
+            <View style={styles.filterRow}>
+              <Chip label="REACT.JS" active />
+              <Chip label="MOBILE" />
+              <Chip label="AGILE" />
+            </View>
+          </AnimatedPanel>
+        </View>
+
+        <View style={[styles.projectGrid, isDesktop ? styles.projectGridDesktop : null]}>
+          {projects.map((project, index) => (
+            <AnimatedPanel
+              delay={140 + index * 80}
+              key={project.title}
+              style={[
+                styles.projectCard,
+                isDesktop ? styles.projectCardDesktop : null,
+                isDesktop && index % 2 === 1 ? styles.projectCardOffset : null,
+              ]}>
+              <RemoteImage source={project.image} style={styles.projectImage} />
+              <View style={styles.projectBody}>
+                <View style={styles.projectTitleRow}>
+                  <View style={styles.projectTitleWrap}>
+                    <Text style={styles.projectLabel}>{project.label}</Text>
+                    <Text style={styles.projectTitle}>{project.title}</Text>
+                  </View>
+                  <MaterialIcons name="north-east" size={18} color={portfolioColors.primaryStrong} />
+                </View>
+                <Text style={portfolioText.bodySmall}>{project.description}</Text>
+                <View style={styles.chipRow}>
+                  {project.stack.map((tag) => (
+                    <Chip key={tag} label={tag} />
+                  ))}
+                </View>
+              </View>
+            </AnimatedPanel>
+          ))}
+        </View>
+
+        <View
+          style={[
+            styles.annotationRow,
+            isDesktop ? styles.annotationRowDesktop : null,
+            isMobile ? styles.annotationRowMobile : null,
+          ]}>
+          <View style={styles.exposureCard}>
+            <Text style={styles.annotationLabel}>TECH_STACK_EXPOSURE</Text>
+            {[
+              ['REACT_JS', 'EXPERT'],
+              ['REACT_NATIVE', 'EXPERT'],
+              ['FLUTTER', 'ADVANCED'],
+              ['JAVA_SPRING_BOOT', 'WORKING_EXP'],
+            ].map(([label, value]) => (
+              <View key={label} style={styles.exposureRow}>
+                <Text style={styles.exposureKey}>{label}</Text>
+                <Text style={styles.exposureValue}>{value}</Text>
+              </View>
+            ))}
+          </View>
+
+          <AnimatedPanel delay={420} style={styles.quoteCard}>
+            <MaterialIcons name="terminal" size={20} color={portfolioColors.primary} />
+            <Text style={styles.quoteText}>
+              “I’m committed to enhancing team effectiveness through strategic focus and quality performance, with empathy and a genuine desire to empower others.”
+            </Text>
+            <Text style={styles.quoteMeta}>MARK EMIL SARMIENTO</Text>
+          </AnimatedPanel>
+        </View>
+      </PortfolioSection>
+
+      <PortfolioSection id="experience">
+        <SectionTitle eyebrow="Professional Dossier" title="Experience" />
+        <View style={[styles.layoutRow, isDesktop ? styles.layoutRowDesktop : null]}>
+          <AnimatedPanel delay={120} style={[styles.sidePanel, isDesktop ? styles.sidePanelDesktop : null]}>
+            <Text style={styles.sideLabel}>CURRENT STATUS</Text>
+            <Text style={styles.sideValue}>AVAILABLE FOR SOFTWARE ENGINEERING ROLES</Text>
+            <Text style={[styles.sideLabel, styles.sideLabelGap]}>CORE COMPETENCIES</Text>
+            <Text style={portfolioText.bodySmall}>
+              Frontend development, mobile app delivery, App Store releases, and collaborative product work.
+            </Text>
+          </AnimatedPanel>
+
+          <View style={[styles.timelineWrap, isDesktop ? styles.timelineWrapDesktop : null]}>
+            <View style={styles.timelineRail} />
+            {timeline.map((item, index) => (
+              <AnimatedReveal delay={180 + index * 90} key={item.role} style={styles.timelineItem}>
+                <View
+                  style={[
+                    styles.timelineNode,
+                    index === 0 ? styles.timelineNodeActive : null,
+                  ]}
+                />
+                <Panel style={styles.timelineCard}>
+                  <View style={styles.timelineHeader}>
+                    <View style={styles.timelineCopy}>
+                      <Text style={styles.timelineYears}>{item.years}</Text>
+                      <Text style={styles.timelineRole}>{item.role}</Text>
+                      <Text style={styles.timelineCompany}>{item.company}</Text>
+                    </View>
+                    <View style={styles.timelineChips}>
+                      {item.chips.map((chip) => (
+                        <Chip key={chip} label={chip} />
+                      ))}
+                    </View>
+                  </View>
+
+                  <View style={styles.bulletList}>
+                    {item.bullets.map((bullet) => (
+                      <View key={bullet} style={styles.bulletRow}>
+                        <MaterialIcons name="bolt" size={14} color={portfolioColors.primary} />
+                        <Text style={[portfolioText.bodySmall, styles.bulletText]}>{bullet}</Text>
+                      </View>
+                    ))}
+                  </View>
+                </Panel>
+              </AnimatedReveal>
+            ))}
+          </View>
+        </View>
+
+        <View style={[styles.metricRow, isTablet ? styles.metricRowWide : null]}>
+          <AnimatedReveal delay={220} style={styles.metricItem}>
+            <Metric label="Years Professional Exp" value="5+" />
+          </AnimatedReveal>
+          <AnimatedReveal delay={280} style={styles.metricItem}>
+            <Metric label="Major Roles" value="4" />
+          </AnimatedReveal>
+          <AnimatedReveal delay={340} style={styles.metricItem}>
+            <Metric label="Platforms Shipped" value="WEB + MOBILE" />
+          </AnimatedReveal>
+        </View>
+      </PortfolioSection>
+
+      <PortfolioSection id="stack">
+        <View style={[styles.sectionHeaderRow, isDesktop ? styles.sectionHeaderRowDesktop : null]}>
+          <View style={styles.headerMain}>
+            <SectionTitle eyebrow="Technical Skills" title="Stack" />
+            <Text style={[portfolioText.body, styles.headerDescription]}>
+              Skills and tools used across React.js, React Native, Flutter, Xcode, Git, Redux, Jest, and Java Spring Boot work.
+            </Text>
+          </View>
+          <View style={styles.versionBlock}>
+            <Text style={styles.versionLabel}>LOCATION</Text>
+            <Text style={styles.versionValue}>CALUMPIT, BULACAN, PH</Text>
+          </View>
+        </View>
+
+        <View style={[styles.topGrid, isDesktop ? styles.topGridDesktop : null]}>
+          <AnimatedPanel delay={140} style={[styles.frontendPanel, isDesktop ? styles.frontendPanelDesktop : null]}>
+            <Text style={styles.panelTitle}>CORE DEVELOPMENT</Text>
+            {frontendSkills.map(([name, level, amount, icon], index) => (
+              <AnimatedReveal key={name} delay={220 + index * 90} style={styles.skillItem}>
+                <View style={styles.skillHeader}>
+                  <View style={styles.skillNameWrap}>
+                    <MaterialIcons
+                      name={icon as React.ComponentProps<typeof MaterialIcons>['name']}
+                      size={18}
+                      color={portfolioColors.primary}
+                    />
+                    <Text style={styles.skillName}>{name}</Text>
+                  </View>
+                  <Text style={styles.skillLevel}>LVL: {level}</Text>
+                </View>
+                <AnimatedProgress delay={300 + index * 90} progress={Number(amount)} />
+              </AnimatedReveal>
+            ))}
+            <AnimatedReveal delay={520} style={styles.quoteInset}>
+              <Text style={styles.quoteInsetText}>
+                “Strategic focus, quality performance, and empathy are central to how I build and collaborate.”
+              </Text>
+            </AnimatedReveal>
+          </AnimatedPanel>
+
+          <AnimatedPanel delay={220} style={[styles.mobilePanel, isDesktop ? styles.mobilePanelDesktop : null]}>
+            <Text style={styles.panelTitle}>SPECIALIZATIONS</Text>
+            <View style={styles.mobileItem}>
+              <View style={styles.mobileIconWrap}>
+                <MaterialIcons name="smartphone" size={22} color={portfolioColors.primary} />
+              </View>
+              <View>
+                <Text style={styles.mobileTitle}>Mobile Apps</Text>
+                <Text style={styles.mobileSubtitle}>IOS AND ANDROID DELIVERY</Text>
+              </View>
+            </View>
+            <View style={styles.mobileItem}>
+              <View style={styles.mobileIconWrap}>
+                <MaterialIcons name="dns" size={22} color={portfolioColors.primary} />
+              </View>
+              <View>
+                <Text style={styles.mobileTitle}>Backend Support</Text>
+                <Text style={styles.mobileSubtitle}>JAVA SPRING BOOT EXPERIENCE</Text>
+              </View>
+            </View>
+            <View style={styles.chipRow}>
+              <Chip label="REACT.JS" />
+              <Chip label="FLUTTER" />
+              <Chip label="JAVA" />
+            </View>
+          </AnimatedPanel>
+        </View>
+
+        <View style={[styles.toolsRow, isDesktop ? styles.toolsRowDesktop : null]}>
+          {toolCards.map(([title, subtitle, value, detail, icon], index) => (
+            <AnimatedPanel
+              delay={280 + index * 80}
+              key={title}
+              style={[styles.toolPanel, isDesktop ? styles.toolPanelDesktop : null]}>
+              <View style={styles.toolIconWrap}>
+                <MaterialIcons
+                  name={icon as React.ComponentProps<typeof MaterialIcons>['name']}
+                  size={28}
+                  color={portfolioColors.primary}
+                />
+              </View>
+              <View style={styles.toolCopy}>
+                <Text style={styles.toolTitle}>{title}</Text>
+                <Text style={styles.toolSubtitle}>{subtitle}</Text>
+              </View>
+              <View style={styles.toolMeta}>
+                <Text style={styles.toolValue}>{value}</Text>
+                <Text style={styles.toolDetail}>{detail}</Text>
+              </View>
+            </AnimatedPanel>
+          ))}
+        </View>
+      </PortfolioSection>
+
+      <PortfolioSection id="contact">
+        <AnimatedPanel delay={160} style={styles.ctaCard}>
+          <View style={styles.ctaIcon}>
+            <MaterialIcons name="bolt" size={18} color={portfolioColors.primary} />
+          </View>
+          <Text style={styles.ctaTitle}>Let’s connect.</Text>
+          <Text style={[portfolioText.body, styles.ctaBody]}>
+            Email: mark.emil.sarmiento@gmail.com | Phone: +63 998 564 0423 | LinkedIn: mark-emil-0235b51a7
+          </Text>
+          <View
+            style={[
+              styles.heroActions,
+              isTablet ? styles.heroActionsWide : null,
+              isMobile ? styles.heroActionsMobile : null,
+            ]}>
+            <View style={styles.buttonWrap}>
+              <PrimaryButton
+                label="View Experience"
+                onPress={() => scrollToPortfolioSection('experience')}
+              />
+            </View>
+            <View style={styles.buttonWrap}>
+              <SecondaryButton
+                label="Go Home"
+                onPress={() => scrollToPortfolioSection('home')}
+              />
+            </View>
+          </View>
+        </AnimatedPanel>
+
+        <FooterSignature label="MARK EMIL SARMIENTO / SOFTWARE ENGINEER" />
+      </PortfolioSection>
+    </PortfolioScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  heroRow: {
+    gap: 18,
+  },
+  heroRowDesktop: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    minHeight: 0,
+  },
+  heroMain: {
+    flex: 1,
+  },
+  heroActions: {
+    gap: 12,
+    marginBottom: 2,
+  },
+  heroActionsWide: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  heroActionsMobile: {
+    width: '100%',
+  },
+  buttonWrap: {
+    minWidth: 0,
+  },
+  metaCard: {
+    gap: 16,
+  },
+  metaCardDesktop: {
+    width: 280,
+    marginTop: 20,
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+  },
+  metaLabel: {
+    color: portfolioColors.primary,
+    fontSize: 10,
+    letterSpacing: 1.6,
+    textTransform: 'uppercase',
+    marginBottom: 6,
+  },
+  metaCopy: {
+    color: portfolioColors.textDim,
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  bioCard: {
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  bioInner: {
+    gap: 18,
+  },
+  bioInnerDesktop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  bioCopy: {
+    flex: 1,
+    gap: 14,
+    minWidth: 0,
+  },
+  bioTitle: {
+    color: portfolioColors.text,
+    fontSize: 32,
+    lineHeight: 34,
+    fontWeight: '900',
+    marginTop: 8,
+  },
+  bioTitleMobile: {
+    fontSize: 24,
+    lineHeight: 28,
+  },
+  capabilityRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 18,
+    marginTop: 4,
+  },
+  capabilityRowMobile: {
+    flexDirection: 'column',
+    gap: 12,
+  },
+  capabilityBlock: {
+    minWidth: 140,
+    gap: 4,
+  },
+  capabilityLabel: {
+    color: portfolioColors.primary,
+    fontSize: 10,
+    letterSpacing: 1.6,
+    textTransform: 'uppercase',
+  },
+  capabilityValue: {
+    color: portfolioColors.text,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  sectionHeaderRow: {
+    gap: 16,
+  },
+  sectionHeaderRowDesktop: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+  },
+  headerMain: {
+    flex: 1,
+    gap: 12,
+  },
+  headerDescription: {
+    maxWidth: 660,
+  },
+  filterPanel: {
+    gap: 12,
+    minWidth: 0,
+  },
+  filterPanelDesktop: {
+    width: 280,
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    paddingBottom: 10,
+  },
+  filterLabel: {
+    color: portfolioColors.textDim,
+    fontSize: 10,
+    letterSpacing: 1.8,
+    fontWeight: '700',
+  },
+  filterRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  projectGrid: {
+    gap: 16,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  projectGridDesktop: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    columnGap: 24,
+    rowGap: 28,
+  },
+  projectCard: {
+    padding: 0,
+    overflow: 'hidden',
+  },
+  projectCardDesktop: {
+    width: '48.9%',
+  },
+  projectCardOffset: {
+    marginTop: 60,
+  },
+  projectImage: {
+    width: '100%',
+    height: 200,
+    backgroundColor: portfolioColors.backgroundAlt,
+  },
+  projectBody: {
+    padding: 18,
+    gap: 14,
+  },
+  projectTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  projectTitleWrap: {
+    flex: 1,
+    gap: 4,
+  },
+  projectLabel: {
+    color: portfolioColors.primary,
+    fontSize: 10,
+    letterSpacing: 1.6,
+    fontWeight: '700',
+  },
+  projectTitle: {
+    color: portfolioColors.text,
+    fontSize: 24,
+    lineHeight: 26,
+    fontWeight: '900',
+  },
+  chipRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  annotationRow: {
+    gap: 16,
+    marginTop: 12,
+  },
+  annotationRowDesktop: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  annotationRowMobile: {
+    marginTop: 0,
+  },
+  exposureCard: {
+    paddingTop: 16,
+    gap: 16,
+    flex: 0.48,
+  },
+  annotationLabel: {
+    color: portfolioColors.text,
+    fontSize: 11,
+    letterSpacing: 2,
+    fontWeight: '800',
+  },
+  exposureRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(60, 73, 78, 0.18)',
+  },
+  exposureKey: {
+    color: portfolioColors.textDim,
+    fontSize: 11,
+    letterSpacing: 1.2,
+  },
+  exposureValue: {
+    color: portfolioColors.primary,
+    fontSize: 11,
+    fontWeight: '800',
+  },
+  quoteCard: {
+    gap: 16,
+    flex: 1,
+  },
+  quoteText: {
+    color: portfolioColors.text,
+    fontSize: 16,
+    lineHeight: 26,
+    fontStyle: 'italic',
+  },
+  quoteMeta: {
+    color: portfolioColors.textDim,
+    fontSize: 11,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  layoutRow: {
+    gap: 16,
+  },
+  layoutRowDesktop: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  sidePanel: {
+    gap: 8,
+  },
+  sidePanelDesktop: {
+    width: 240,
+  },
+  sideLabel: {
+    color: portfolioColors.textDim,
+    fontSize: 10,
+    letterSpacing: 1.6,
+    textTransform: 'uppercase',
+  },
+  sideValue: {
+    color: portfolioColors.primary,
+    fontSize: 14,
+    fontWeight: '800',
+    letterSpacing: 0.3,
+  },
+  sideLabelGap: {
+    marginTop: 10,
+  },
+  timelineWrap: {
+    position: 'relative',
+    gap: 18,
+    paddingLeft: 22,
+    flex: 1,
+  },
+  timelineWrapDesktop: {
+    minWidth: 0,
+  },
+  timelineRail: {
     position: 'absolute',
+    left: 7,
+    top: 0,
+    bottom: 0,
+    width: 1,
+    backgroundColor: 'rgba(60, 73, 78, 0.2)',
+  },
+  timelineItem: {
+    position: 'relative',
+  },
+  timelineNode: {
+    position: 'absolute',
+    left: -22,
+    top: 22,
+    width: 14,
+    height: 14,
+    borderRadius: 999,
+    backgroundColor: portfolioColors.surfaceHighest,
+  },
+  timelineNodeActive: {
+    backgroundColor: portfolioColors.primary,
+    shadowColor: portfolioColors.primaryStrong,
+    shadowOpacity: 0.35,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 0 },
+  },
+  timelineCard: {
+    gap: 14,
+  },
+  timelineHeader: {
+    gap: 12,
+  },
+  timelineCopy: {
+    gap: 4,
+  },
+  timelineYears: {
+    color: portfolioColors.textDim,
+    fontSize: 11,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+  },
+  timelineRole: {
+    color: portfolioColors.text,
+    fontSize: 28,
+    lineHeight: 30,
+    fontWeight: '900',
+  },
+  timelineCompany: {
+    color: portfolioColors.primary,
+    fontSize: 13,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+  },
+  timelineChips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  bulletList: {
+    gap: 12,
+  },
+  bulletRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+  },
+  bulletText: {
+    flex: 1,
+  },
+  metricRow: {
+    gap: 12,
+    marginTop: 4,
+  },
+  metricRowWide: {
+    flexDirection: 'row',
+  },
+  metricItem: {
+    flex: 1,
+  },
+  versionBlock: {
+    gap: 8,
+    alignItems: 'flex-start',
+    paddingTop: 10,
+  },
+  versionLabel: {
+    color: portfolioColors.textDim,
+    fontSize: 11,
+    letterSpacing: 1.4,
+  },
+  versionValue: {
+    color: portfolioColors.primary,
+    fontSize: 16,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  topGrid: {
+    gap: 16,
+  },
+  topGridDesktop: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+  },
+  frontendPanel: {
+    gap: 18,
+  },
+  frontendPanelDesktop: {
+    flex: 1.8,
+  },
+  mobilePanel: {
+    gap: 16,
+  },
+  mobilePanelDesktop: {
+    flex: 0.9,
+  },
+  panelTitle: {
+    color: portfolioColors.primary,
+    fontSize: 11,
+    letterSpacing: 2.2,
+    textTransform: 'uppercase',
+  },
+  skillItem: {
+    gap: 10,
+  },
+  skillHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+    flexWrap: 'wrap',
+  },
+  skillNameWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  skillName: {
+    color: portfolioColors.text,
+    fontSize: 24,
+    fontWeight: '800',
+  },
+  skillLevel: {
+    color: portfolioColors.textDim,
+    fontSize: 10,
+    letterSpacing: 1.2,
+  },
+  quoteInset: {
+    marginTop: 4,
+    backgroundColor: portfolioColors.backgroundAlt,
+    borderRadius: 18,
+    padding: 16,
+  },
+  quoteInsetText: {
+    color: portfolioColors.textMuted,
+    fontSize: 15,
+    lineHeight: 24,
+    fontStyle: 'italic',
+  },
+  mobileItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+  },
+  mobileIconWrap: {
+    width: 52,
+    height: 52,
+    borderRadius: 16,
+    backgroundColor: portfolioColors.surfaceHighest,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mobileTitle: {
+    color: portfolioColors.text,
+    fontSize: 22,
+    fontWeight: '800',
+  },
+  mobileSubtitle: {
+    color: portfolioColors.textDim,
+    fontSize: 11,
+    letterSpacing: 1.1,
+  },
+  toolsRow: {
+    gap: 16,
+  },
+  toolsRowDesktop: {
+    flexDirection: 'row',
+  },
+  toolPanel: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    flexWrap: 'wrap',
+  },
+  toolPanelDesktop: {
+    flex: 1,
+  },
+  toolIconWrap: {
+    width: 58,
+    height: 58,
+    borderRadius: 999,
+    backgroundColor: portfolioColors.backgroundAlt,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  toolCopy: {
+    flex: 1,
+    gap: 4,
+  },
+  toolTitle: {
+    color: portfolioColors.text,
+    fontSize: 24,
+    fontWeight: '800',
+  },
+  toolSubtitle: {
+    color: portfolioColors.textDim,
+    fontSize: 11,
+    letterSpacing: 1.2,
+  },
+  toolMeta: {
+    alignItems: 'flex-end',
+    gap: 2,
+    marginLeft: 'auto',
+  },
+  toolValue: {
+    color: portfolioColors.primary,
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  toolDetail: {
+    color: portfolioColors.textDim,
+    fontSize: 9,
+    letterSpacing: 1,
+  },
+  ctaCard: {
+    alignItems: 'center',
+    paddingTop: 30,
+    paddingBottom: 30,
+    gap: 14,
+    backgroundColor: portfolioColors.backgroundAlt,
+  },
+  ctaIcon: {
+    width: 42,
+    height: 42,
+    borderRadius: 999,
+    backgroundColor: portfolioColors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ctaTitle: {
+    color: portfolioColors.text,
+    fontSize: 28,
+    lineHeight: 32,
+    textAlign: 'center',
+    fontWeight: '900',
+  },
+  ctaBody: {
+    textAlign: 'center',
+    maxWidth: 680,
   },
 });
