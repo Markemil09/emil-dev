@@ -1,5 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
+import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import {
   AnimatedPanel,
@@ -25,36 +26,22 @@ import {
 
 const projects = [
   {
-    title: 'FRONTEND DEVELOPMENT',
-    label: 'REACT.JS',
+    title: 'EM CAPITAL',
+    label: 'CRYPTO_CRM',
     description:
-      'Built dynamic and responsive web applications using React.js across multiple production roles.',
-    image: portfolioImages.projectA,
-    stack: ['REACT.JS', 'HTML', 'CSS', 'JAVASCRIPT'],
+      'A crypto CRM platform with real-time portfolio tracking, lead management, and global market monitoring — integrated with the CoinGecko API and deployed on Vercel.',
+    image: portfolioImages.emCapital,
+    stack: ['REACT.JS', 'TYPESCRIPT', 'COINGECKO_API', 'VERCEL'],
+    url: 'https://crypto-management-nine.vercel.app/',
   },
   {
-    title: 'MOBILE APP DELIVERY',
-    label: 'CROSS_PLATFORM',
+    title: 'PROPERTY MANAGEMENT',
+    label: 'PROPERTY_MGMT',
     description:
-      'Delivered mobile apps with Flutter and React Native for both iOS and Android platforms.',
-    image: portfolioImages.projectB,
-    stack: ['FLUTTER', 'REACT_NATIVE', 'IOS', 'ANDROID'],
-  },
-  {
-    title: 'APP STORE RELEASES',
-    label: 'IOS_DEPLOYMENT',
-    description:
-      'Published iOS applications to the Apple App Store with full compliance to review guidelines.',
-    image: portfolioImages.projectC,
-    stack: ['XCODE', 'APP_STORE', 'TESTING'],
-  },
-  {
-    title: 'TEAM COLLABORATION',
-    label: 'AGILE_DELIVERY',
-    description:
-      'Worked closely with designers, backend developers, and junior engineers in agile teams.',
-    image: portfolioImages.projectD,
-    stack: ['AGILE', 'MENTORING', 'GIT'],
+      'A mobile app for homeowners to manage their property — pay mortgages and bills, request maintenance services like lawn mowing or repairs, and keep all property documents organized in one place.',
+    image: portfolioImages.propertyManagement,
+    stack: ['REACT_NATIVE', 'IOS', 'ANDROID', 'MOBILE'],
+    url: 'https://drive.google.com/file/d/140GuTU_nntoxvkyE5UpTehJMbN_sjVO8/view?usp=drive_link',
   },
 ];
 
@@ -107,12 +94,13 @@ const frontendSkills = [
   ['React.js', 'EXPERT', 0.95, 'data-object'],
   ['React Native', 'EXPERT', 0.92, 'smartphone'],
   ['Flutter', 'ADVANCED', 0.9, 'rocket-launch'],
+  ['Java Spring Boot', 'WORKING_EXP', 0.65, 'dns'],
 ];
 
 const toolCards = [
   ['Xcode', 'IOS_RELEASES', 'APP_STORE', 'SUBMISSIONS', 'phone-iphone'],
+  ['Redux', 'STATE_MGMT', 'REACT', 'UI_COMPONENTS', 'layers'],
   ['Git', 'VERSION_CONTROL', 'AGILE', 'TEAM_WORKFLOWS', 'account-tree'],
-  ['Jest', 'TESTING', 'UI_LOGIC', 'QUALITY_CHECKS', 'verified'],
 ];
 
 export default function HomeScreen() {
@@ -124,10 +112,10 @@ export default function HomeScreen() {
         <View style={[styles.heroRow, isDesktop ? styles.heroRowDesktop : null]}>
           <AnimatedReveal style={styles.heroMain}>
             <BrandHeader
-              eyebrow="Senior Software Engineer"
+              eyebrow="Full Stack Developer"
               title="Mark Emil"
               accent=" Sarmiento."
-              description="Frontend and mobile developer focused on React.js, React Native, Flutter, and practical product delivery for web and mobile teams."
+              description="Full stack developer building web and mobile products with React.js, React Native, Flutter, and Java Spring Boot — focused on quality delivery and collaborative engineering."
             />
 
           <View
@@ -144,8 +132,8 @@ export default function HomeScreen() {
             </View>
             <View style={styles.buttonWrap}>
               <SecondaryButton
-                label="View Experience"
-                onPress={() => scrollToPortfolioSection('experience')}
+                label="Download Resume"
+                onPress={() => Linking.openURL('/resume.pdf')}
               />
             </View>
           </View>
@@ -155,12 +143,12 @@ export default function HomeScreen() {
             <View>
               <Text style={styles.metaLabel}>01 / CORE PHILOSOPHY</Text>
               <Text style={styles.metaCopy}>
-                I focus on quality performance, strategic execution, and helping teams work effectively.
+                Committed to quality performance, strategic execution, and empowering the teams I work with.
               </Text>
             </View>
             <View>
               <Text style={styles.metaLabel}>02 / CONTACT</Text>
-              <Text style={styles.metaCopy}>mark.emil.sarmiento@gmail.com | +63 998 564 0423</Text>
+              <Text style={styles.metaCopy}>mark.emil.sarmiento@gmail.com{'\n'}+63 998 564 0423{'\n'}Calumpit, Bulacan, PH</Text>
             </View>
           </AnimatedPanel>
         </View>
@@ -169,10 +157,10 @@ export default function HomeScreen() {
           <View style={[styles.bioInner, isDesktop ? styles.bioInnerDesktop : null]}>
             <View style={styles.bioCopy}>
               <Text style={[styles.bioTitle, isMobile ? styles.bioTitleMobile : null]}>
-                Building responsive web and mobile products with a practical engineering mindset.
+                Full stack developer building web, mobile, and backend products with a practical engineering mindset.
               </Text>
               <Text style={portfolioText.body}>
-                As a dedicated professional, I am committed to enhancing team effectiveness through
+                As a dedicated professional, I'm committed to enhancing team effectiveness through
                 strategic focus and quality performance. My approach is driven by empathy and a
                 genuine desire to empower others.
               </Text>
@@ -182,12 +170,16 @@ export default function HomeScreen() {
               </Text>
               <View style={[styles.capabilityRow, isMobile ? styles.capabilityRowMobile : null]}>
                 <View style={styles.capabilityBlock}>
-                  <Text style={styles.capabilityLabel}>SYSTEMS</Text>
-                  <Text style={styles.capabilityValue}>React.js and JavaScript Applications</Text>
+                  <Text style={styles.capabilityLabel}>FRONTEND</Text>
+                  <Text style={styles.capabilityValue}>React.js / HTML / CSS / JavaScript</Text>
                 </View>
                 <View style={styles.capabilityBlock}>
-                  <Text style={styles.capabilityLabel}>INTERFACE</Text>
-                  <Text style={styles.capabilityValue}>React Native and Flutter Mobile Apps</Text>
+                  <Text style={styles.capabilityLabel}>MOBILE</Text>
+                  <Text style={styles.capabilityValue}>React Native and Flutter</Text>
+                </View>
+                <View style={styles.capabilityBlock}>
+                  <Text style={styles.capabilityLabel}>BACKEND</Text>
+                  <Text style={styles.capabilityValue}>Java Spring Boot</Text>
                 </View>
               </View>
             </View>
@@ -198,17 +190,17 @@ export default function HomeScreen() {
       <PortfolioSection id="projects">
         <View style={[styles.sectionHeaderRow, isDesktop ? styles.sectionHeaderRowDesktop : null]}>
           <View style={styles.headerMain}>
-            <SectionTitle eyebrow="Highlights" title="Capabilities" />
+            <SectionTitle eyebrow="Work" title="Projects" />
             <Text style={[portfolioText.body, styles.headerDescription]}>
-              Core work areas pulled from my recent experience across frontend, mobile, release, and collaboration.
+              Selected projects I've designed and built — spanning web apps, crypto tools, and production-ready interfaces.
             </Text>
           </View>
           <AnimatedPanel delay={120} style={[styles.filterPanel, isDesktop ? styles.filterPanelDesktop : null]}>
-            <Text style={styles.filterLabel}>FOCUS_AREAS</Text>
+            <Text style={styles.filterLabel}>CATEGORIES</Text>
             <View style={styles.filterRow}>
-              <Chip label="REACT.JS" active />
-              <Chip label="MOBILE" />
-              <Chip label="AGILE" />
+              <Chip label="WEB" active />
+              <Chip label="CRYPTO" />
+              <Chip label="TOOLS" />
             </View>
           </AnimatedPanel>
         </View>
@@ -223,22 +215,26 @@ export default function HomeScreen() {
                 isDesktop ? styles.projectCardDesktop : null,
                 isDesktop && index % 2 === 1 ? styles.projectCardOffset : null,
               ]}>
-              <RemoteImage source={project.image} style={styles.projectImage} />
-              <View style={styles.projectBody}>
-                <View style={styles.projectTitleRow}>
-                  <View style={styles.projectTitleWrap}>
-                    <Text style={styles.projectLabel}>{project.label}</Text>
-                    <Text style={styles.projectTitle}>{project.title}</Text>
+              <Pressable
+                onPress={() => WebBrowser.openBrowserAsync(project.url)}
+                style={({ pressed }) => [styles.cardPressable, pressed && styles.cardPressed]}>
+                <RemoteImage source={project.image} style={styles.projectImage} />
+                <View style={styles.projectBody}>
+                  <View style={styles.projectTitleRow}>
+                    <View style={styles.projectTitleWrap}>
+                      <Text style={styles.projectLabel}>{project.label}</Text>
+                      <Text style={styles.projectTitle}>{project.title}</Text>
+                    </View>
+                    <MaterialIcons name="north-east" size={18} color={portfolioColors.primaryStrong} />
                   </View>
-                  <MaterialIcons name="north-east" size={18} color={portfolioColors.primaryStrong} />
+                  <Text style={portfolioText.bodySmall}>{project.description}</Text>
+                  <View style={styles.chipRow}>
+                    {project.stack.map((tag) => (
+                      <Chip key={tag} label={tag} />
+                    ))}
+                  </View>
                 </View>
-                <Text style={portfolioText.bodySmall}>{project.description}</Text>
-                <View style={styles.chipRow}>
-                  {project.stack.map((tag) => (
-                    <Chip key={tag} label={tag} />
-                  ))}
-                </View>
-              </View>
+              </Pressable>
             </AnimatedPanel>
           ))}
         </View>
@@ -267,7 +263,7 @@ export default function HomeScreen() {
           <AnimatedPanel delay={420} style={styles.quoteCard}>
             <MaterialIcons name="terminal" size={20} color={portfolioColors.primary} />
             <Text style={styles.quoteText}>
-              “I’m committed to enhancing team effectiveness through strategic focus and quality performance, with empathy and a genuine desire to empower others.”
+              “I'm committed to enhancing team effectiveness through strategic focus and quality performance, with empathy and a genuine desire to empower others.”
             </Text>
             <Text style={styles.quoteMeta}>MARK EMIL SARMIENTO</Text>
           </AnimatedPanel>
@@ -282,14 +278,14 @@ export default function HomeScreen() {
             <Text style={styles.sideValue}>AVAILABLE FOR SOFTWARE ENGINEERING ROLES</Text>
             <Text style={[styles.sideLabel, styles.sideLabelGap]}>CORE COMPETENCIES</Text>
             <Text style={portfolioText.bodySmall}>
-              Frontend development, mobile app delivery, App Store releases, and collaborative product work.
+              Full stack development across React.js, React Native, Flutter, Java Spring Boot, App Store releases, and agile team delivery.
             </Text>
           </AnimatedPanel>
 
           <View style={[styles.timelineWrap, isDesktop ? styles.timelineWrapDesktop : null]}>
             <View style={styles.timelineRail} />
             {timeline.map((item, index) => (
-              <AnimatedReveal delay={180 + index * 90} key={item.role} style={styles.timelineItem}>
+              <AnimatedReveal delay={180 + index * 90} key={item.company} style={styles.timelineItem}>
                 <View
                   style={[
                     styles.timelineNode,
@@ -342,7 +338,7 @@ export default function HomeScreen() {
           <View style={styles.headerMain}>
             <SectionTitle eyebrow="Technical Skills" title="Stack" />
             <Text style={[portfolioText.body, styles.headerDescription]}>
-              Skills and tools used across React.js, React Native, Flutter, Xcode, Git, Redux, Jest, and Java Spring Boot work.
+              Full stack skills spanning React.js, React Native, Flutter, Java Spring Boot, Xcode, Git, Redux, and Jest.
             </Text>
           </View>
           <View style={styles.versionBlock}>
@@ -436,9 +432,14 @@ export default function HomeScreen() {
           <View style={styles.ctaIcon}>
             <MaterialIcons name="bolt" size={18} color={portfolioColors.primary} />
           </View>
-          <Text style={styles.ctaTitle}>Let’s connect.</Text>
+          <Text style={styles.ctaTitle}>Let's connect.</Text>
           <Text style={[portfolioText.body, styles.ctaBody]}>
-            Email: mark.emil.sarmiento@gmail.com | Phone: +63 998 564 0423 | LinkedIn: mark-emil-0235b51a7
+            mark.emil.sarmiento@gmail.com{'\n'}+63 998 564 0423{'\n'}
+            <Text
+              style={styles.ctaLink}
+              onPress={() => WebBrowser.openBrowserAsync('https://www.linkedin.com/in/mark-emil-0235b51a7/')}>
+              LinkedIn
+            </Text>
           </Text>
           <View
             style={[
@@ -448,14 +449,14 @@ export default function HomeScreen() {
             ]}>
             <View style={styles.buttonWrap}>
               <PrimaryButton
-                label="View Experience"
-                onPress={() => scrollToPortfolioSection('experience')}
+                label="Download Resume"
+                onPress={() => Linking.openURL('/resume.pdf')}
               />
             </View>
             <View style={styles.buttonWrap}>
               <SecondaryButton
-                label="Go Home"
-                onPress={() => scrollToPortfolioSection('home')}
+                label="LinkedIn"
+                onPress={() => WebBrowser.openBrowserAsync('https://www.linkedin.com/in/mark-emil-0235b51a7/')}
               />
             </View>
           </View>
@@ -617,6 +618,12 @@ const styles = StyleSheet.create({
   projectCard: {
     padding: 0,
     overflow: 'hidden',
+  },
+  cardPressable: {
+    flex: 1,
+  },
+  cardPressed: {
+    opacity: 0.85,
   },
   projectCardDesktop: {
     width: '48.9%',
@@ -1010,5 +1017,10 @@ const styles = StyleSheet.create({
   ctaBody: {
     textAlign: 'center',
     maxWidth: 680,
+  },
+  ctaLink: {
+    color: portfolioColors.primary,
+    fontWeight: '700',
+    textDecorationLine: 'underline',
   },
 });

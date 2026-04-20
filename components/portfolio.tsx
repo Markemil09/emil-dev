@@ -12,6 +12,7 @@ import {
 } from 'react';
 import {
   ImageStyle,
+  Linking,
   Platform,
   Pressable,
   ScrollView,
@@ -30,11 +31,13 @@ import Animated, {
   FadeIn,
   FadeInUp,
   LinearTransition,
+  SharedValue,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
   withRepeat,
   withSequence,
+  withSpring,
   withTiming,
 } from 'react-native-reanimated';
 
@@ -69,7 +72,9 @@ export const portfolioImages = {
     'https://lh3.googleusercontent.com/aida-public/AB6AXuCH3abj8a2jGLNp-urr64UThObPQx38VbIo8lwXhZgjSKrvbRGIS4Yv7XuZRw9JR9-oGtPHGYwEcnBptR24WpKYWGTzGeaOwZkFDEoErRJjXcL6bfo5sEaCmOaujcrr1RbsP9OXqandystrshJ7c61mM5CF_TNmARG4F71QwgBl1MoDqmG_HI8iK6cN9IaAyJY0sR1osMBdbyK9EzC3FOBMz0z_vqNL0VbcEPL3boYcupv_OQomjj4zZL-rY2BOYTgUKYrPI75TUyHr',
   projectD:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuC9OhjghDqv82cBvgOGLA72U_i9HWDuO7j-hrU_UMM7EAhDEbs2z0o3gjsE-QufMHV6390-nt_RNUYyFOsg4xdQd14T-vOdapeqezHad1jIOdkFnmUClFQ1wUoVjZ0LpPrUw-sEI4OL679D89zWJNWCvdB6SfiNzxDKIV-IBxjmoPXJ75HhgEkv_Njo2dQrl92jBdDKqo0UDSdRWA8bCaNHw6ywjGpb8l7BRCHQMFPpupnO0r0rjf07rx1M0Jh6zxxUq6pLxWUP1peg',
-} as const;
+  emCapital: require('../assets/images/em-capital.png'),
+  propertyManagement: require('../assets/images/property-management.png'),
+};
 
 export function usePortfolioLayout() {
   const { width } = useWindowDimensions();
@@ -89,6 +94,14 @@ export function PortfolioScreen({ children }: { children: ReactNode }) {
   const [sectionOffsets, setSectionOffsets] = useState<Record<string, number>>({});
   const [viewportHeight, setViewportHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
+  const mouseX = useSharedValue(0);
+  const mouseY = useSharedValue(0);
+
+  const handlePointerMove = useCallback((e: any) => {
+    if (Platform.OS !== 'web') return;
+    mouseX.value = withSpring(e.nativeEvent.pageX - (e.nativeEvent.target?.ownerDocument?.documentElement?.clientWidth ?? 0) / 2, { damping: 18, stiffness: 60 });
+    mouseY.value = withSpring(e.nativeEvent.pageY - (e.nativeEvent.target?.ownerDocument?.documentElement?.clientHeight ?? 0) / 2, { damping: 18, stiffness: 60 });
+  }, [mouseX, mouseY]);
 
   const registerSection = useCallback((id: string, y: number) => {
     setSectionOffsets((current) => {
@@ -122,7 +135,10 @@ export function PortfolioScreen({ children }: { children: ReactNode }) {
 
   return (
     <PortfolioScrollContext.Provider value={contextValue}>
-      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+      <SafeAreaView
+        style={styles.safeArea}
+        edges={['top', 'left', 'right']}
+        onPointerMove={handlePointerMove as any}>
         <PortfolioNav />
         <ScrollView
           ref={scrollViewRef}
@@ -132,14 +148,10 @@ export function PortfolioScreen({ children }: { children: ReactNode }) {
           onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
           scrollEventThrottle={16}
           style={styles.scrollView}>
-          <AmbientGlow style={styles.glowOne} duration={6200} travelX={18} travelY={24} />
-          <AmbientGlow
-            style={styles.glowTwo}
-            delay={300}
-            duration={7400}
-            travelX={-14}
-            travelY={18}
-          />
+          <AmbientGlow style={styles.glowOne} duration={6200} travelX={18} travelY={24} mouseX={mouseX} mouseY={mouseY} factorX={0.18} factorY={0.14} />
+          <AmbientGlow style={styles.glowTwo} delay={300} duration={7400} travelX={-14} travelY={18} mouseX={mouseX} mouseY={mouseY} factorX={-0.14} factorY={-0.18} />
+          <AmbientGlow style={styles.glowThree} delay={600} duration={8800} travelX={10} travelY={-20} mouseX={mouseX} mouseY={mouseY} factorX={0.22} factorY={0.10} />
+          <AmbientGlow style={styles.glowFour} delay={900} duration={5600} travelX={-20} travelY={14} mouseX={mouseX} mouseY={mouseY} factorX={-0.16} factorY={0.20} />
           <Animated.View
             entering={FadeIn.duration(500)}
             layout={LinearTransition.duration(250)}
@@ -380,12 +392,20 @@ function AmbientGlow({
   delay = 0,
   travelX,
   travelY,
+  mouseX,
+  mouseY,
+  factorX = 0,
+  factorY = 0,
 }: {
   style: StyleProp<ViewStyle>;
   duration: number;
   delay?: number;
   travelX: number;
   travelY: number;
+  mouseX?: SharedValue<number>;
+  mouseY?: SharedValue<number>;
+  factorX?: number;
+  factorY?: number;
 }) {
   const offset = useSharedValue(0);
 
@@ -406,8 +426,8 @@ function AmbientGlow({
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: 0.5 + offset.value * 0.45,
     transform: [
-      { translateX: offset.value * travelX },
-      { translateY: offset.value * travelY },
+      { translateX: offset.value * travelX + (mouseX ? mouseX.value * factorX : 0) },
+      { translateY: offset.value * travelY + (mouseY ? mouseY.value * factorY : 0) },
       { scale: 1 + offset.value * 0.08 },
     ],
   }));
@@ -726,18 +746,26 @@ export function RemoteImage({
   style,
   contentFit = 'cover',
 }: {
-  source: string;
+  source: string | number | object;
   style: StyleProp<ImageStyle>;
   contentFit?: 'cover' | 'contain';
 }) {
-  return <Image source={source} contentFit={contentFit} style={style} />;
+  return <Image source={source as string} contentFit={contentFit} style={style} />;
 }
 
 export function FooterSignature({ label = 'MARK EMIL SARMIENTO / SOFTWARE ENGINEER' }: { label?: string }) {
   return (
     <View style={styles.footer}>
       <Text style={styles.footerBrand}>{label}</Text>
-      <Text style={styles.footerMeta}>mark.emil.sarmiento@gmail.com   LINKEDIN   +63 998 564 0423</Text>
+      <Text style={styles.footerMeta}>
+        mark.emil.sarmiento@gmail.com{'   '}
+        <Text
+          style={styles.footerLink}
+          onPress={() => Linking.openURL('https://www.linkedin.com/in/mark-emil-0235b51a7/')}>
+          LinkedIn
+        </Text>
+        {'   '}+63 998 564 0423
+      </Text>
     </View>
   );
 }
@@ -806,21 +834,39 @@ const styles = StyleSheet.create({
   },
   glowOne: {
     position: 'absolute',
-    top: 40,
-    right: -40,
-    width: 220,
-    height: 220,
+    top: -60,
+    right: -80,
+    width: 480,
+    height: 480,
     borderRadius: 999,
-    backgroundColor: 'rgba(0, 210, 255, 0.08)',
+    backgroundColor: 'rgba(0, 210, 255, 0.22)',
   },
   glowTwo: {
     position: 'absolute',
-    top: 420,
-    left: -90,
-    width: 180,
-    height: 180,
+    top: 500,
+    left: -160,
+    width: 420,
+    height: 420,
     borderRadius: 999,
-    backgroundColor: 'rgba(165, 231, 255, 0.06)',
+    backgroundColor: 'rgba(165, 231, 255, 0.18)',
+  },
+  glowThree: {
+    position: 'absolute',
+    top: 1100,
+    right: -120,
+    width: 380,
+    height: 380,
+    borderRadius: 999,
+    backgroundColor: 'rgba(0, 180, 220, 0.18)',
+  },
+  glowFour: {
+    position: 'absolute',
+    top: 1800,
+    left: -100,
+    width: 320,
+    height: 320,
+    borderRadius: 999,
+    backgroundColor: 'rgba(120, 220, 255, 0.16)',
   },
   navBar: {
     backgroundColor: '#0b1018',
@@ -1122,6 +1168,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     letterSpacing: 1.5,
     textTransform: 'uppercase',
+  },
+  footerLink: {
+    color: portfolioColors.primary,
+    fontWeight: '700',
+    textDecorationLine: 'underline',
   },
   backToTopWrap: {
     position: 'absolute',

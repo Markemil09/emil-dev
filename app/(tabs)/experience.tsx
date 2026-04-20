@@ -31,11 +31,11 @@ const timeline = [
     years: '03/2022 — 05/2025',
     role: 'Senior Software Engineer',
     company: 'TopApps Inc.',
-    chips: ['FLUTTER', 'XCODE'],
+    chips: ['FLUTTER', 'JAVA', 'REDUX'],
     bullets: [
+      'Developed reusable UI components and managed state with Redux across React.js projects.',
       'Optimized app performance and reduced load times through efficient coding practices.',
-      'Worked in an agile setup with backend engineers and mentored junior team members.',
-      'Used React.js, Flutter, React Native, Xcode, Android Studio, and Git in daily delivery.',
+      'Contributed Java Spring Boot backend work and mentored junior team members in an agile setup.',
     ],
   },
   {
@@ -70,7 +70,7 @@ export default function ExperienceScreen() {
           eyebrow="Work History"
           title="Professional"
           accent=" Experience."
-          description="Senior software engineer with production experience across React.js, React Native, Flutter, and Java Spring Boot, delivering web and mobile products in agile teams."
+          description="Full stack developer with 5+ years delivering web and mobile products using React.js, React Native, Flutter, and Java Spring Boot across agile teams."
         />
       </AnimatedReveal>
 
@@ -85,14 +85,14 @@ export default function ExperienceScreen() {
           <Text style={styles.sideValue}>AVAILABLE FOR SOFTWARE ENGINEERING ROLES</Text>
           <Text style={[styles.sideLabel, styles.sideLabelGap]}>CORE COMPETENCIES</Text>
           <Text style={portfolioText.bodySmall}>
-            Frontend development, cross-platform mobile apps, App Store release workflows, and team collaboration.
+            Full stack delivery across React.js, React Native, Flutter, Java Spring Boot, App Store releases, Redux, and agile team workflows.
           </Text>
         </AnimatedPanel>
 
         <View style={[styles.timelineWrap, isDesktop ? styles.timelineWrapDesktop : null]}>
           <View style={styles.timelineRail} />
           {timeline.map((item, index) => (
-            <AnimatedReveal delay={180 + index * 90} key={item.role} style={styles.timelineItem}>
+            <AnimatedReveal delay={180 + index * 90} key={item.company} style={styles.timelineItem}>
               <View style={[styles.timelineNode, index === 0 ? styles.timelineNodeActive : null]} />
               <Panel style={styles.timelineCard}>
                 <View style={styles.timelineHeader}>

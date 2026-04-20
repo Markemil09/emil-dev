@@ -1,5 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import {
   AnimatedPanel,
@@ -17,36 +18,22 @@ import {
 
 const projects = [
   {
-    title: 'FRONTEND DEVELOPMENT',
-    label: 'REACT.JS',
+    title: 'EM CAPITAL',
+    label: 'CRYPTO_CRM',
     description:
-      'Built dynamic and responsive web applications using React.js across multiple production roles.',
-    image: portfolioImages.projectA,
-    stack: ['REACT.JS', 'HTML', 'CSS', 'JAVASCRIPT'],
+      'A crypto CRM platform with real-time portfolio tracking, lead management, and global market monitoring — integrated with the CoinGecko API and deployed on Vercel.',
+    image: portfolioImages.emCapital,
+    stack: ['REACT.JS', 'TYPESCRIPT', 'COINGECKO_API', 'VERCEL'],
+    url: 'https://crypto-management-nine.vercel.app/',
   },
   {
-    title: 'MOBILE APP DELIVERY',
-    label: 'CROSS_PLATFORM',
+    title: 'PROPERTY MANAGEMENT',
+    label: 'PROPERTY_MGMT',
     description:
-      'Delivered mobile apps with Flutter and React Native for both iOS and Android platforms.',
-    image: portfolioImages.projectB,
-    stack: ['FLUTTER', 'REACT_NATIVE', 'IOS', 'ANDROID'],
-  },
-  {
-    title: 'APP STORE RELEASES',
-    label: 'IOS_DEPLOYMENT',
-    description:
-      'Published iOS applications to the Apple App Store with full compliance to review guidelines.',
-    image: portfolioImages.projectC,
-    stack: ['XCODE', 'APP_STORE', 'TESTING'],
-  },
-  {
-    title: 'TEAM COLLABORATION',
-    label: 'AGILE_DELIVERY',
-    description:
-      'Worked closely with designers, backend developers, and junior engineers in agile teams.',
-    image: portfolioImages.projectD,
-    stack: ['AGILE', 'MENTORING', 'GIT'],
+      'A mobile app for homeowners to manage their property — pay mortgages and bills, request maintenance services like lawn mowing or repairs, and keep all property documents organized in one place.',
+    image: portfolioImages.propertyManagement,
+    stack: ['REACT_NATIVE', 'IOS', 'ANDROID', 'MOBILE'],
+    url: 'https://drive.google.com/file/d/140GuTU_nntoxvkyE5UpTehJMbN_sjVO8/view?usp=drive_link',
   },
 ];
 
@@ -58,18 +45,18 @@ export default function ProjectsScreen() {
       <View style={[styles.headerRow, isDesktop ? styles.headerRowDesktop : null]}>
         <AnimatedReveal style={styles.headerMain}>
           <BrandHeader
-            eyebrow="Highlights"
-            title="CAPABILITIES"
+            eyebrow="Work"
+            title="PROJECTS"
             accent="."
-            description="Core work areas from my experience in frontend engineering, mobile app development, App Store delivery, and agile collaboration."
+            description="Selected projects I've designed and built — spanning web apps, crypto tools, and production-ready interfaces."
           />
         </AnimatedReveal>
         <AnimatedPanel delay={120} style={[styles.filterPanel, isDesktop ? styles.filterPanelDesktop : null]}>
-          <Text style={styles.filterLabel}>FOCUS_AREAS</Text>
+          <Text style={styles.filterLabel}>CATEGORIES</Text>
           <View style={styles.filterRow}>
-            <Chip label="REACT.JS" active />
-            <Chip label="MOBILE" />
-            <Chip label="AGILE" />
+            <Chip label="WEB" active />
+            <Chip label="CRYPTO" />
+            <Chip label="TOOLS" />
           </View>
         </AnimatedPanel>
       </View>
@@ -84,22 +71,26 @@ export default function ProjectsScreen() {
               isDesktop ? styles.projectCardDesktop : null,
               isDesktop && index % 2 === 1 ? styles.projectCardOffset : null,
             ]}>
-            <RemoteImage source={project.image} style={styles.projectImage} />
-            <View style={styles.projectBody}>
-              <View style={styles.projectTitleRow}>
-                <View style={styles.projectTitleWrap}>
-                  <Text style={styles.projectLabel}>{project.label}</Text>
-                  <Text style={styles.projectTitle}>{project.title}</Text>
+            <Pressable
+              onPress={() => WebBrowser.openBrowserAsync(project.url)}
+              style={({ pressed }) => [styles.cardPressable, pressed && styles.cardPressed]}>
+              <RemoteImage source={project.image} style={styles.projectImage} />
+              <View style={styles.projectBody}>
+                <View style={styles.projectTitleRow}>
+                  <View style={styles.projectTitleWrap}>
+                    <Text style={styles.projectLabel}>{project.label}</Text>
+                    <Text style={styles.projectTitle}>{project.title}</Text>
+                  </View>
+                  <MaterialIcons name="north-east" size={18} color={portfolioColors.primaryStrong} />
                 </View>
-                <MaterialIcons name="north-east" size={18} color={portfolioColors.primaryStrong} />
+                <Text style={portfolioText.bodySmall}>{project.description}</Text>
+                <View style={styles.chipRow}>
+                  {project.stack.map((tag) => (
+                    <Chip key={tag} label={tag} />
+                  ))}
+                </View>
               </View>
-              <Text style={portfolioText.bodySmall}>{project.description}</Text>
-              <View style={styles.chipRow}>
-                {project.stack.map((tag) => (
-                  <Chip key={tag} label={tag} />
-                ))}
-              </View>
-            </View>
+            </Pressable>
           </AnimatedPanel>
         ))}
       </View>
@@ -128,14 +119,14 @@ export default function ProjectsScreen() {
         <AnimatedPanel delay={360} style={styles.quoteCard}>
           <MaterialIcons name="terminal" size={20} color={portfolioColors.primary} />
           <Text style={styles.quoteText}>
-            “I’m committed to enhancing team effectiveness through strategic focus and quality
-            performance, with empathy and a genuine desire to empower others.”
+            "I'm committed to enhancing team effectiveness through strategic focus and quality
+            performance, with empathy and a genuine desire to empower others."
           </Text>
           <Text style={styles.quoteMeta}>MARK EMIL SARMIENTO</Text>
         </AnimatedPanel>
       </View>
 
-      <FooterSignature label="MARK EMIL SARMIENTO / CAPABILITIES" />
+      <FooterSignature label="MARK EMIL SARMIENTO / FULL STACK DEVELOPER" />
     </PortfolioScreen>
   );
 }
@@ -193,6 +184,12 @@ const styles = StyleSheet.create({
   },
   projectCardOffset: {
     marginTop: 60,
+  },
+  cardPressable: {
+    flex: 1,
+  },
+  cardPressed: {
+    opacity: 0.85,
   },
   projectImage: {
     width: '100%',

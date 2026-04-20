@@ -18,6 +18,7 @@ const frontendSkills = [
   ['React.js', 'EXPERT', 0.95, 'data-object'],
   ['React Native', 'EXPERT', 0.92, 'smartphone'],
   ['Flutter', 'ADVANCED', 0.9, 'rocket-launch'],
+  ['Java Spring Boot', 'WORKING_EXP', 0.65, 'dns'],
 ];
 
 const toolCards = [
@@ -37,7 +38,7 @@ export default function StackScreen() {
             eyebrow="Technical Skills"
             title="Engineering"
             accent=" Stack."
-            description="Frontend, mobile, and delivery tools used across React.js, React Native, Flutter, and Java Spring Boot projects."
+            description="Full stack skills across React.js, React Native, Flutter, Java Spring Boot, Redux, Xcode, Git, and Jest."
           />
         </AnimatedReveal>
         <AnimatedReveal delay={120} style={styles.versionBlock}>
@@ -88,14 +89,15 @@ export default function StackScreen() {
               <MaterialIcons name="dns" size={22} color={portfolioColors.primary} />
             </View>
             <View>
-              <Text style={styles.mobileTitle}>Backend Support</Text>
-              <Text style={styles.mobileSubtitle}>JAVA SPRING BOOT EXPERIENCE</Text>
+              <Text style={styles.mobileTitle}>Backend</Text>
+              <Text style={styles.mobileSubtitle}>JAVA SPRING BOOT</Text>
             </View>
           </View>
           <View style={styles.chipRow}>
             <Chip label="REACT.JS" />
             <Chip label="FLUTTER" />
             <Chip label="JAVA" />
+            <Chip label="REDUX" />
           </View>
         </AnimatedPanel>
       </View>
@@ -131,16 +133,16 @@ export default function StackScreen() {
       </View>
 
       <AnimatedPanel delay={520} style={styles.signatureBlock}>
-        <Text style={styles.signatureTitle}>SKILLS BUILT FOR PRODUCT DELIVERY.</Text>
+        <Text style={styles.signatureTitle}>FULL STACK SKILLS FOR PRODUCT DELIVERY.</Text>
         <Text style={[portfolioText.body, styles.signatureCopy]}>
-          My toolkit centers on shipping responsive web apps, cross-platform mobile apps, and maintainable product features in collaborative engineering teams.
+          Built for shipping — responsive web apps, cross-platform mobile, and backend services across collaborative engineering teams.
         </Text>
         <View style={styles.signatureGrid}>
           {[
             ['FRONTEND', 'React.js / HTML / CSS / JavaScript'],
-            ['MOBILE', 'Flutter / React Native'],
+            ['MOBILE', 'Flutter / React Native / iOS / Android'],
             ['BACKEND', 'Java Spring Boot'],
-            ['TOOLS', 'Xcode / Git / Jest / Redux'],
+            ['TOOLS', 'Xcode / Git / Redux / Jest'],
           ].map(([label, value]) => (
             <View key={label} style={styles.signatureItem}>
               <Text style={styles.signatureLabel}>{label}</Text>

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(tsx?|jsx?\\)$')",
+      "WebFetch(domain:crypto-management-nine.vercel.app)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
