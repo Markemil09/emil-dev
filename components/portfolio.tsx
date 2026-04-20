@@ -16,16 +16,15 @@ import {
   Platform,
   Pressable,
   ScrollView,
-  StyleSheet,
+  ScrollView as ScrollViewType,
   StyleProp,
+  StyleSheet,
   Text,
   TextStyle,
-  ScrollView as ScrollViewType,
   useWindowDimensions,
   View,
   ViewStyle,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Animated, {
   Easing,
   FadeIn,
@@ -40,6 +39,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const portfolioColors = {
   background: '#111316',
@@ -804,7 +804,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 16,
-    paddingBottom: 120,
+    paddingBottom: 24,
     gap: 24,
   },
   pageShell: {

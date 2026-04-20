@@ -24,6 +24,8 @@ import {
   usePortfolioLayout,
 } from '@/components/portfolio';
 
+const resumeUrl = '/Mark%20Emil%20Sarmiento%20-%20Application.pdf';
+
 const projects = [
   {
     title: 'EM CAPITAL',
@@ -133,7 +135,7 @@ export default function HomeScreen() {
             <View style={styles.buttonWrap}>
               <SecondaryButton
                 label="Download Resume"
-                onPress={() => Linking.openURL('/resume.pdf')}
+                onPress={() => Linking.openURL(resumeUrl)}
               />
             </View>
           </View>
@@ -245,7 +247,7 @@ export default function HomeScreen() {
             isDesktop ? styles.annotationRowDesktop : null,
             isMobile ? styles.annotationRowMobile : null,
           ]}>
-          <View style={styles.exposureCard}>
+          <View style={[styles.exposureCard, isDesktop ? styles.exposureCardDesktop : null]}>
             <Text style={styles.annotationLabel}>TECH_STACK_EXPOSURE</Text>
             {[
               ['REACT_JS', 'EXPERT'],
@@ -260,7 +262,7 @@ export default function HomeScreen() {
             ))}
           </View>
 
-          <AnimatedPanel delay={420} style={styles.quoteCard}>
+          <AnimatedPanel delay={420} style={[styles.quoteCard, isDesktop ? styles.quoteCardDesktop : null]}>
             <MaterialIcons name="terminal" size={20} color={portfolioColors.primary} />
             <Text style={styles.quoteText}>
               “I'm committed to enhancing team effectiveness through strategic focus and quality performance, with empathy and a genuine desire to empower others.”
@@ -450,7 +452,7 @@ export default function HomeScreen() {
             <View style={styles.buttonWrap}>
               <PrimaryButton
                 label="Download Resume"
-                onPress={() => Linking.openURL('/resume.pdf')}
+                onPress={() => Linking.openURL(resumeUrl)}
               />
             </View>
             <View style={styles.buttonWrap}>
@@ -681,6 +683,8 @@ const styles = StyleSheet.create({
   exposureCard: {
     paddingTop: 16,
     gap: 16,
+  },
+  exposureCardDesktop: {
     flex: 0.48,
   },
   annotationLabel: {
@@ -708,6 +712,8 @@ const styles = StyleSheet.create({
   },
   quoteCard: {
     gap: 16,
+  },
+  quoteCardDesktop: {
     flex: 1,
   },
   quoteText: {
