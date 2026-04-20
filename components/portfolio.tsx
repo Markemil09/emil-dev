@@ -761,7 +761,7 @@ export function FooterSignature({ label = 'MARK EMIL SARMIENTO / SOFTWARE ENGINE
         mark.emil.sarmiento@gmail.com{'   '}
         <Text
           style={styles.footerLink}
-          onPress={() => Linking.openURL('https://www.linkedin.com/in/mark-emil-0235b51a7/')}>
+          onPress={() => Linking.openURL('https://www.linkedin.com/in/mark-emil-sarmiento/')}>
           LinkedIn
         </Text>
         {'   '}+63 998 564 0423
