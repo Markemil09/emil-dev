@@ -439,7 +439,7 @@ export default function HomeScreen() {
             mark.emil.sarmiento@gmail.com{'\n'}+63 998 564 0423{'\n'}
             <Text
               style={styles.ctaLink}
-              onPress={() => WebBrowser.openBrowserAsync('https://www.linkedin.com/in/mark-emil-0235b51a7/')}>
+              onPress={() => WebBrowser.openBrowserAsync('https://www.linkedin.com/in/mark-emil-sarmiento/')}>
               LinkedIn
             </Text>
           </Text>
@@ -458,7 +458,7 @@ export default function HomeScreen() {
             <View style={styles.buttonWrap}>
               <SecondaryButton
                 label="LinkedIn"
-                onPress={() => WebBrowser.openBrowserAsync('https://www.linkedin.com/in/mark-emil-0235b51a7/')}
+                onPress={() => WebBrowser.openBrowserAsync('https://www.linkedin.com/in/mark-emil-sarmiento/')}
               />
             </View>
           </View>
