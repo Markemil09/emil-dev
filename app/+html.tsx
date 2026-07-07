@@ -16,7 +16,12 @@ export default function Root({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-
+        <script
+          async
+          src="https://cdn.cognosgrow.com/a/aeo-agent.js"
+          data-manifest-url="http://localhost:5173/api/projects/ae03b436-cb8b-42ad-a3e5-449260dea802/manifest"
+          data-content-endpoint="http://localhost:5173/api/projects/ae03b436-cb8b-42ad-a3e5-449260dea802"
+        />
         {/* 
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
           However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.
@@ -25,15 +30,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
 
         {/* Add any additional <head> elements that you want globally available on web... */}
       </head>
-      <body>
-        {children}
-        <script
-          async
-          src="https://cdn.cognosgrow.com/a/aeo-agent.js"
-          data-manifest-url="http://localhost:5173/api/projects/ae03b436-cb8b-42ad-a3e5-449260dea802/manifest"
-          data-content-endpoint="http://localhost:5173/api/projects/ae03b436-cb8b-42ad-a3e5-449260dea802"
-        />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
