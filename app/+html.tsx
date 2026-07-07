@@ -19,8 +19,8 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <script
           async
           src="https://cdn.cognosgrow.com/a/aeo-agent.js"
-          data-manifest-url="http://localhost:5173/api/projects/ae03b436-cb8b-42ad-a3e5-449260dea802/manifest"
-          data-content-endpoint="http://localhost:5173/api/projects/ae03b436-cb8b-42ad-a3e5-449260dea802"
+          data-manifest-url="http://localhost:8000/api/projects/206e3bac-8535-463a-a39d-14c0a79bd7d5/manifest"
+          data-content-endpoint="http://localhost:8000/api/projects/206e3bac-8535-463a-a39d-14c0a79bd7d5"
         />
         {/* 
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
