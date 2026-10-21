@@ -16,12 +16,6 @@ export default function Root({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <script
-          async
-          src="http://localhost:8000/aeo-agent.js"
-          data-manifest-url="http://localhost:8000/api/projects/206e3bac-8535-463a-a39d-14c0a79bd7d5/manifest"
-          data-content-endpoint="http://localhost:8000/api/projects/206e3bac-8535-463a-a39d-14c0a79bd7d5"
-        />
         {/* 
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
           However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.
